@@ -3,7 +3,7 @@ https://colab.research.google.com/drive/1nHQjTJTbyojJZueQVNQDWAL4XhNi75uL?usp=sh
 Scrape Amazon review data such as review given by, review text, review title, rating, review-date etc &amp; 
 download the ProWebScraper helps you extract data from any website.
 
-# We convert the reviews list into a dictionary. 
+We convert the reviews list into a dictionary. 
 Then import the pandas library and use it to convert the dictionary into a data frame. 
 Then using to_csv() function we convert it into a CSV file and store it in our computer
 
