@@ -1,1 +1,113 @@
 
+[1]from bs4 import BeautifulSoup as bs
+import requests
+
+[2]link ='https://www.amazon.in/Apple-MacBook-Chip-13-inch-512GB/product-reviews/B08N5WRWNW/ref=cm_cr_dp_d_show_all_btm?ie=UTF8&reviewerType=all_reviews'
+
+[3]page = requests.get(link)
+
+[4]page
+
+[5]page.content
+
+[6]soup =bs(page.content,'html.parser')
+
+[7]print(soup.prettify())
+
+[8]cust_name.pop(1)
+
+[9]cust_name.pop(0)
+
+[10]cust_name
+
+[11]title = soup.find_all('a',class_='review-title-content')
+
+[12]title
+
+[13]review_title =[]
+for i in range(0,len(title)):
+  review_title.append(title[i].get_text())
+  
+  [14]review_title
+  
+  [15]review_title[:]=[titles.lstrip('\n') for titles in review_title]
+review_title
+
+[16]review_title[:]=[titles.rstrip('\n') for titles in review_title]
+review_title
+
+[17]rating=soup.find_all('i',class_='review-rating')
+
+[18]rating
+
+[19]rate=[]
+for i in range(0,len(rating)):
+  rate.append(rating[i].get_text())
+  
+  [20]rate
+  
+  [21]len(rate)
+  
+  [22]rate.pop(0)
+  
+  [23]rate.pop(1)
+  
+  [24]review=soup.find_all("span",{"data-hook":"review-body"})
+  
+  [25]review
+  
+  [26]review_content =[]
+for i in range(0,len(review)):
+  review_content.append(review[i].get_text())
+  
+  [27]review_content
+  
+  [28]review_content[:]=[reviews.lstrip('\n') for reviews in review_content]
+review_content
+
+[29]review_content[:]=[reviews.rstrip('\n') for reviews in review_content]
+review_content
+
+[30]len(review_content)
+
+[31]review=soup.find_all("span",{"data-hook":"review-date"})
+
+[32]review
+
+[33]review_date =[]
+for i in range(0,len(review)):
+  review_date.append(review[i].get_text())
+  
+  [34]review_date
+  
+  [35]review_date[:]=[reviews.lstrip('Reviewed in India on ') for reviews in review_date]
+review_date
+
+[36]cust_name
+review_title
+rate
+review_content
+review_date
+
+[37]import pandas as pd
+
+[38]df=pd.DataFrame()
+
+[39]df
+
+[40]df['Review given by']=cust_name
+
+df
+
+[41]df['Ratings']=rate
+
+df
+
+[42]df['review description']=review_content
+df['review date']=review_date
+df['review title']=review_title
+
+[43]df
+
+[44]df.to_csv("./review.csv", index =True)
+  
